@@ -1,6 +1,8 @@
 package pset9;
 import static org.junit.Assert.*;
 
+import java.lang.String;
+
 import org.junit.Test;
 
 import junit.framework.TestCase;
