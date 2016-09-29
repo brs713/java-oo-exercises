@@ -44,6 +44,7 @@ public class Robot {
 	}
 
 	//it can rotate - (depending on orientation)
+// TODO:  This isn't to specs...needs to be 90 degrees left or right...refactor this!
 	public void rotate(int rotationDegrees) {
 		if (rotationDegrees % 90 != 0) {
 			System.out.println("Invalid rotation angle; please use multiples of 90");
