@@ -87,15 +87,20 @@ public class Student {
 		double qual = this.cred * this.gpa;
 		this.cred += courseCred;
 		qual += (courseCred * courseGrade);
-		double newgpa = (Math.round((qual / this.cred) * 1000) / 1000);
-		setGPA(newgpa);
+		double newgpa = (qual / this.cred) * 1000;
+		newgpa = Math.round(newgpa);
+		setGPA(newgpa / 1000.0); //newgpa);
 		return;
 	}
 	
-	public int computeTuition() {
-		int tuition = (((this.cred / 15)) * 20000);// + ((int) ((Math.round(this.cred % 15) / 15.0) * 20000));
+	public double computeTuition() {
+		double t = this.cred / 15.0;
+		t = Math.ceil(t);
+		double tuition = (t * 20000);// + ((int) ((Math.round(this.cred % 15) / 15.0) * 20000));
+		//System.out.println("T is " + t);
 		return tuition;
 	}
+	
 	
 	
 }
