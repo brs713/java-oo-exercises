@@ -94,20 +94,40 @@ public class Student {
 	}
 	
 	public double computeTuition() {
-		double t = this.cred / 15.0;
-		t = Math.ceil(t);
-		double tuition = (t * 20000);// + ((int) ((Math.round(this.cred % 15) / 15.0) * 20000));
-		//System.out.println("T is " + t);
+		double tuition = 0;
+		if (this.cred >= 15) {
+			tuition = (this.cred / 15) * 20000.0;
+//			System.out.println("tuition is " + tuition);
+		}
+		double multiplier = 1.0 / 15.0;
+		//t = Math.ceil(t);
+//		System.out.println("t = " + multiplier);
+		double partial = Math.floor((multiplier * 20000) * 1000.0);//+ ((int) ((Math.round(this.cred % 15) / 15.0) * 20000));
+//		System.out.println("Tuition 1 is " + partial);
+		partial /= 1000.0;
+//		System.out.println("T2 is " + partial);
+		partial = Math.floor(partial * 100.0);
+//		System.out.println("T3 = " + partial);
+		partial /= 100.0;
+//		System.out.println("T4 " + partial);
+		partial *= (this.cred % 15);
+		tuition += partial;
+//		System.out.println("tuition is " + tuition + " and partial is " + partial);
 		return tuition;
 	}
 	
 	public Student createLegacy(Student mom, Student pop) {
-		this.f = mom.getName();
-		this.l = pop.getName();
-		this.id = mom.getStudentID() + pop.getStudentID();
-		this.cred = (mom.getCredits() > pop.getCredits()) ? mom.getCredits() : pop.getCredits();;
-		this.gpa = (mom.getGPA() + pop.getGPA()) / 2.0;
-		return this;
+		String f = mom.getName();
+		String l = pop.getName();
+		int id = mom.getStudentID() + pop.getStudentID();
+		int cred = (mom.getCredits() > pop.getCredits()) ? mom.getCredits() : pop.getCredits();;
+		double gpa = (mom.getGPA() + pop.getGPA()) / 2.0;
+		Student kid = new Student(f, l, id, cred, gpa);
+		return kid;
+	}
+	
+	public String toString() {
+		return "" + this.getName() + " " + this.getStudentID();
 	}
 	
 }

@@ -4,7 +4,7 @@ import org.junit.Test;
 
 import junit.framework.TestCase;
 
-// Apparently, we need a Student class here.
+
 
 public class StudentAndCourseTest extends TestCase {
 
@@ -104,9 +104,11 @@ public class StudentAndCourseTest extends TestCase {
 			double a =  (Math.random() * 5000);
 			double b =  (Math.random() * 5000);
 			Student s = new Student("" + a, "" + b, 1);
+//			System.out.println("ma = " + s.getStudentID());
 			double a2 =  (Math.random() * 5000);
 			double b2 =  (Math.random() * 5000);
 			Student ss = new Student("" + a2, "" + b2, 2);
+			//System.out.println("pa = " + ss.getStudentID());
 			int c = (int)(Math.random() * 120 + 1);
 			double g = Math.round(Math.random() * 4000) / 1000.0;
 			s.submitGrade(g, c);
@@ -114,6 +116,8 @@ public class StudentAndCourseTest extends TestCase {
 			double g2 = Math.round(Math.random() * 4000) / 1000.0;
 			ss.submitGrade(g2, c2);
 			Student bb = s.createLegacy(s, ss);
+			//System.out.println("Mom's id is " + s.getStudentID() + "  and pop's id is " + ss.getStudentID());
+			//System.out.println("Mom's name is " + s.getName() + "  and pop's name is " + ss.getName());
 			assertTrue("create baby not setting name properly", bb.getName().contains(s.getName()) && bb.getName().contains(ss.getName()));
 			assertEquals("create baby not setting gpa properly", (g + g2) / 2, bb.getGPA(), 0.01);
 			assertEquals("create baby not setting credits properly", bb.getCredits(), Math.max(c, c2));
@@ -130,21 +134,21 @@ public class StudentAndCourseTest extends TestCase {
 
 		}
 	}
-//
-//	@Test
-//	public void testStudentToString() {
-//		for (int i = 0; i < 100; i++) {
-//			double a =  (Math.random() * 5000);
-//			double b =  (Math.random() * 5000);
-//			int c = (int)Math.random() * 500000;
-//			Student s = new Student("" + a, "" + b, c);
-//			assertTrue("student toString does not contain entire student name", s.toString().contains("" + a));
-//			assertTrue("student toString does not contain entire student name", s.toString().contains("" + b));
-//			assertTrue("student toString does not contain student ID", s.toString().contains("" + c));
-//		}
-//	}
-//
-//
+
+	@Test
+	public void testStudentToString() {
+		for (int i = 0; i < 100; i++) {
+			double a =  (Math.random() * 5000);
+			double b =  (Math.random() * 5000);
+			int c = (int)Math.random() * 500000;
+			Student s = new Student("" + a, "" + b, c);
+			assertTrue("student toString does not contain entire student name", s.toString().contains("" + a));
+			assertTrue("student toString does not contain entire student name", s.toString().contains("" + b));
+			assertTrue("student toString does not contain student ID", s.toString().contains("" + c));
+		}
+	}
+
+
 //
 //
 //
