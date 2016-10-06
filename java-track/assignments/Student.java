@@ -101,6 +101,13 @@ public class Student {
 		return tuition;
 	}
 	
-	
+	public Student createLegacy(Student mom, Student pop) {
+		this.f = mom.getName();
+		this.l = pop.getName();
+		this.id = mom.getStudentID() + pop.getStudentID();
+		this.cred = (mom.getCredits() > pop.getCredits()) ? mom.getCredits() : pop.getCredits();;
+		this.gpa = (mom.getGPA() + pop.getGPA()) / 2.0;
+		return this;
+	}
 	
 }
