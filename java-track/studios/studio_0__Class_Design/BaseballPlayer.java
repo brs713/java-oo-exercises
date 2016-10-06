@@ -54,6 +54,15 @@ public class BaseballPlayer {
 		this.hits = hits; 		// added
 	}
 	
+	public int getHits() {
+		return this.hits;
+	}
+	
+	public int getRBIs() {
+		return this.RBIs;
+	}
+		
+	
 	public void recordHits(int hits) {
 		this.hits += hits;		
 	}

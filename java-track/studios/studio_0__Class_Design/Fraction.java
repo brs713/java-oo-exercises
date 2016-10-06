@@ -29,6 +29,14 @@ public class Fraction {
 		this.d = d;
 	}
 	
+	public int getN() {
+		return this.n;
+	}
+	
+	public int getD() {
+		return this.d;
+	}
+	
 	public Fraction multiply(Fraction f) {
 		int num = this.n * f.n;
 		int den = this.d * f.d;

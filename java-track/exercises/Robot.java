@@ -21,6 +21,18 @@ public class Robot {
 		this.orientation = orientation;
 	}
 	
+	public int getX() {
+		return this.position[0];
+	}
+	
+	public int getY() {
+		return this.position[1];
+	}
+	
+	public int getOrientation() {
+		return this.orientation;
+	}
+	
 	//it can move - (depending on orientation, speed, & position)
 	public void move() {
 		
@@ -48,6 +60,10 @@ public class Robot {
 	public void rotate(int rotationDegrees) {
 		if (rotationDegrees % 90 != 0) {
 			System.out.println("Invalid rotation angle; please use multiples of 90");
+			return;
+		}
+		if (orientation % 180 == 0 && orientation % 90 != 0) {
+			System.out.println("Just go right or left!");
 			return;
 		}
 		this.orientation = (this.orientation + rotationDegrees) % 360;
@@ -100,5 +116,13 @@ public class Robot {
 		System.out.println("\nShould be back to origin now:");
 		System.out.println(sarge);
 		System.out.println(sarge.distanceFromRobot(siri));
+		System.out.println();
+		System.out.println((-1 + 4) % 4);
+		System.out.println((0 + 4) % 4);
+		System.out.println((1 + 4) % 4);
+		System.out.println((2 + 4) % 4);
+		System.out.println((3 + 4) % 4);
+		System.out.println((4 + 4) % 4);
+
 	}
 }
