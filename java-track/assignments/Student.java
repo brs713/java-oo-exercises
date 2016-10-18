@@ -83,6 +83,8 @@ public class Student {
 		}
 	}
 	
+	
+	//submit grade
 	public void submitGrade(double courseGrade, int courseCred) {
 		double qual = this.cred * this.gpa;
 		this.cred += courseCred;
@@ -93,6 +95,8 @@ public class Student {
 		return;
 	}
 	
+	
+	//compute tuition
 	public double computeTuition() {
 		double tuition = 0;
 		if (this.cred >= 15) {
@@ -116,7 +120,7 @@ public class Student {
 		return tuition;
 	}
 	
-	public Student createLegacy(Student mom, Student pop) {
+	public static Student createLegacy(Student mom, Student pop) {
 		String f = mom.getName();
 		String l = pop.getName();
 		int id = mom.getStudentID() + pop.getStudentID();

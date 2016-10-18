@@ -1,12 +1,13 @@
 
-public class Robot {
+public class Robot{
 
 	//Fields:
 	
-	private String name;
-	private int[] position;
-	private int speed;
-	private int orientation;
+	protected String name;
+	protected int[] position;
+	protected int speed;
+	protected int orientation;
+	protected RobotBehavior behavior;
 	//name - String
 	//position (x, y) - int[]
 	//speed - int
@@ -21,6 +22,10 @@ public class Robot {
 		this.orientation = orientation;
 	}
 	
+	public String getName() {
+		return this.name;
+	}
+	
 	public int getX() {
 		return this.position[0];
 	}
@@ -33,6 +38,14 @@ public class Robot {
 		return this.orientation;
 	}
 	
+	public int getSpeed() {
+		return speed;
+	}
+
+	public void setSpeed(int speed) {
+		this.speed = speed;
+	}
+
 	//it can move - (depending on orientation, speed, & position)
 	public void move() {
 		
@@ -56,13 +69,12 @@ public class Robot {
 	}
 
 	//it can rotate - (depending on orientation)
-// TODO:  This isn't to specs...needs to be 90 degrees left or right...refactor this!
 	public void rotate(int rotationDegrees) {
 		if (rotationDegrees % 90 != 0) {
 			System.out.println("Invalid rotation angle; please use multiples of 90");
 			return;
 		}
-		if (orientation % 180 == 0 && orientation % 90 != 0) {
+		if (rotationDegrees % 90 != 0 || rotationDegrees % 180 == 0) {
 			System.out.println("Just go right or left!");
 			return;
 		}
@@ -76,10 +88,15 @@ public class Robot {
 		double distance = Math.pow((xSquared + ySquared), .5);
 		return distance;
 	}
+	
+	public void setBehavior(RobotBehavior behavior) 
+	{
+		this.behavior = behavior;
+	}
 
 	//toString()
 	public String toString() {
-		return "Name: " + this.name + "  Position: (" + this.position[0] + ", " + this.position[1]  + ")  Speed: " + this.speed + "  Orientation: " + this.orientation;
+		return "Name: " + this.name + "\tPosition: (" + this.position[0] + ", " + this.position[1]  + ")\tSpeed: " + this.speed + "\tOrientation: " + this.orientation;
 	}
 
 	//Implement main function to test functionality
@@ -118,11 +135,13 @@ public class Robot {
 		System.out.println(sarge.distanceFromRobot(siri));
 		System.out.println();
 		System.out.println((-1 + 4) % 4);
-		System.out.println((0 + 4) % 4);
-		System.out.println((1 + 4) % 4);
-		System.out.println((2 + 4) % 4);
-		System.out.println((3 + 4) % 4);
-		System.out.println((4 + 4) % 4);
+		
+		for (int i = 0; i < 5; ++i) {
+			System.out.println((i + 4) % 4);
+		}
 
 	}
+	
+	
+	
 }

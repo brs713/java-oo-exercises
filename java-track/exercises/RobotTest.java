@@ -14,9 +14,23 @@ public class RobotTest {
 	@Test
 	public void testRotate() {
 		Robot r = new Robot("Sarge", new int[]{1, 2}, 20, 90);
-		r.rotate(180);
-		assertTrue("Problem with rotate()", r.getOrientation() == 270);
+//		int times = (int)(Math.random() * 100);
+//		for (int rotAmt = 90; rotAmt < 360 * times; rotAmt+= 360) {
+//			r.rotate(rotAmt);
+//			assertTrue("Problem with rotate()", r.getOrientation() == 0);
+//		}
+		r.rotate(90);
+		assertTrue("Problem with rotate()", r.getOrientation() == 180);
 	}
+	
+	@Test
+	public void failRotate() {
+		Robot r = new Robot("Sarge", new int[]{1, 2}, 20, 90);
+		r.rotate(180);
+		assertTrue("Allowed robot to turn 180 degrees", r.getOrientation() == 90);
+	}
+	
+	
 
 	@Test
 	public void testDistanceFromRobot() {
