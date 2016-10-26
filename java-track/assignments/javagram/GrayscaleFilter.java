@@ -1,9 +1,10 @@
-package javagram.filters;
+package javagram;
 
-import javagram.Picture;
 import java.awt.Color;
 
-public class BlueFilter implements Filter{
+import javagram.filters.Filter;
+
+public class GrayscaleFilter implements Filter{
 
 	@Override
 	public Picture process(Picture original) {
@@ -21,9 +22,9 @@ public class BlueFilter implements Filter{
 				int g = c.getGreen();
 				int b = c.getBlue();
 
-				int newBlue = (r + g + b) / 3;
+				int newColor = (r + g + b) / 3;
 
-				processed.set(i, j, new Color(0, 0, newBlue));
+				processed.set(i, j, new Color(newColor, newColor, newColor));
 
 			}
 		}	
