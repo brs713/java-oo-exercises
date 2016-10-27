@@ -1,8 +1,8 @@
-package javagram;
+package javagram.filters;
 
 import java.awt.Color;
 
-import javagram.filters.Filter;
+import javagram.Picture;
 
 public class GrayscaleFilter implements Filter{
 
